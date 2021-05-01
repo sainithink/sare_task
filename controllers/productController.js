@@ -83,7 +83,7 @@ exports.cart_product = [ async(req,res) => {
 
 exports.list_product =[async(req,res) => {
 	try {
-		let data;
+		let data={};
 		if (req.query.category) {
 		data = await db.product.find({"category":req.query.category});
 		}if (req.query.price) {
@@ -91,9 +91,22 @@ exports.list_product =[async(req,res) => {
 		}if (req.query.size) {
 			data = await db.product.find({"variant.size_variant":req.query.size});
 		}if (req.query.quantity) {
-			data = await db.product.find({"variant.quantity":req.query.quantity});
+			let temp_data = await db.product.findOne({"_id	":req.query.id});
+
+			data._id = temp_data._id
+			data.product_name=temp_data.product_name
+			data.product_id=temp_data.product_id
+			data.category=temp_data.category
+			data.price= temp_data.price * req.query.quantity
+			data.variant= temp_data.variant
+			data.weight= temp_data.weight * req.query.quantity
+			data.delivery_charge= temp_data.delivery_charge * req.query.quantity
+			data.createdAt= temp_data.createdAt
+			data.updatedAt= temp_data.updatedAt
+			
+
 		}		
-		if (data.length>0) {
+		if (data) {
 			return apiResponse.successResponseWithData(res,"Categories Foud Success.", data);
 		}else{
 			return apiResponse.notFoundResponse(res,"Nothing found")
