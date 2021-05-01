@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "abfb174f-7c4a-47c3-a63d-0d4ab657b4d5",
+		"name": "SARE.in",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "add_category",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"category_name\":\"Clothes\",\n    \"category_id\":\"C1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/category/add_category",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"category",
+						"add_category"
+					]
+				},
+				"description": "{{url}}/api/category/"
+			},
+			"response": []
+		},
+		{
+			"name": "list_category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/category/list_category",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"category",
+						"list_category"
+					]
+				},
+				"description": "{{url}}/api/category/list_category"
+			},
+			"response": []
+		},
+		{
+			"name": "add_product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"product_name\":\"jeans\",\n    \"product_id\":\"C1J1\",\n    \"category\":\"608d23575830414fdd079a57\",\n    \"price\":\"200\",\n    \"variant\":[{\n       \"color_variant\":\"Blue\",\n        \"size_variant\":[\"S\"],\n        \"quantity\":[\"20\"]\n    },\n        {\n       \"color_variant\":\"Black\",\n        \"size_variant\":[\"S\",\"M\"],\n        \"quantity\":[\"100\",\"200\"]\n    }\n    ],   \n    \"weight\":\"0.5\",\n    \"delivery_charge\":\"10\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/product/add_product",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"product",
+						"add_product"
+					]
+				},
+				"description": "{{url}}/api/product/"
+			},
+			"response": []
+		},
+		{
+			"name": "get product price by id and color selection",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/product/cart_product/608d397f011eb5744bda27bc?color_variant=Black",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"product",
+						"cart_product",
+						"608d397f011eb5744bda27bc"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "608d2a32c18e9b5b0ed97c14",
+							"disabled": true
+						},
+						{
+							"key": "color_variant",
+							"value": "Black"
+						}
+					]
+				},
+				"description": "{{url}}/api/product/cart_product/608d397f011eb5744bda27bc?color_variant=Black"
+			},
+			"response": []
+		},
+		{
+			"name": "Search product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/product/list_product?price=200",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"product",
+						"list_product"
+					],
+					"query": [
+						{
+							"key": "price",
+							"value": "200"
+						}
+					]
+				},
+				"description": "{{url}}/api/product/?price=200"
+			},
+			"response": []
+		}
+	]
+}
